@@ -1,6 +1,7 @@
 package com.example.walterbiblioteca.models;
 
 
+import com.example.walterbiblioteca.enums.StatusDeLeitura;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,5 +25,8 @@ public class Livro {
 
     @Column(columnDefinition = "TEXT")
     private String descricao;
+
+    @Enumerated(EnumType.STRING)
+    private StatusDeLeitura statusDeLeitura;
 
 }

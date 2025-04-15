@@ -1,6 +1,6 @@
 package com.example.walterbiblioteca.models;
 
-
+import com.example.walterbiblioteca.enums.StatusDeLeitura;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +16,6 @@ public class LivroUsuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
@@ -25,8 +24,8 @@ public class LivroUsuario {
     @JoinColumn(name = "livro_id", nullable = false)
     private Livro livro;
 
-    @ManyToOne
-    @JoinColumn(name = "status_id", nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status_leitura", nullable = false)
     private StatusDeLeitura statusLeitura;
 
     private java.sql.Date dataInicio;
@@ -36,4 +35,10 @@ public class LivroUsuario {
     @Column(columnDefinition = "TEXT")
     private String comentarios;
 
+    // 👇 Campos adicionais para exibir no banco
+    @Column(name = "nome_usuario")
+    private String nomeUsuario;
+
+    @Column(name = "titulo_livro")
+    private String tituloLivro;
 }
