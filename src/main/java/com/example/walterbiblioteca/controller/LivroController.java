@@ -1,7 +1,7 @@
-package com.example.walterbiblioteca.controllers;
+package com.example.walterbiblioteca.controller;
 
 import com.example.walterbiblioteca.dtos.LivroDto;
-import com.example.walterbiblioteca.services.LivroService;
+import com.example.walterbiblioteca.service.LivroService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -25,11 +25,7 @@ public class LivroController {
     // 🔍 GET /api/livros/{id}
     @GetMapping("/{id}")
     public ResponseEntity<LivroDto> buscarPorId(@PathVariable Integer id) {
-        try {
-            return ResponseEntity.ok(livroService.buscarPorId(id));
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(livroService.buscarPorId(id));
     }
 
     // ➕ POST /api/livros
@@ -41,11 +37,7 @@ public class LivroController {
     // ✏️ PUT /api/livros/{id}
     @PutMapping("/{id}")
     public ResponseEntity<LivroDto> atualizar(@PathVariable Integer id, @Valid @RequestBody LivroDto dto) {
-        try {
-            return ResponseEntity.ok(livroService.atualizar(id, dto));
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(livroService.atualizar(id, dto));
     }
 
     // 🗑️ DELETE /api/livros/{id}

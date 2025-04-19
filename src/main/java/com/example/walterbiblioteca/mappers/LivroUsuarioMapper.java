@@ -17,10 +17,10 @@ public class LivroUsuarioMapper {
     private final LivroRepository livroRepository;
 
     public LivroUsuario toEntity(LivroUsuarioDto dto) {
-        Usuario usuario = usuarioRepository.findByNome(dto.nomeUsuario())
+        Usuario usuario = usuarioRepository.findByNomeIgnoreCase(dto.nomeUsuario())
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado: " + dto.nomeUsuario()));
 
-        Livro livro = livroRepository.findByTitulo(dto.tituloLivro())
+        Livro livro = livroRepository.findByTituloIgnoreCase(dto.tituloLivro())
                 .orElseThrow(() -> new RuntimeException("Livro não encontrado: " + dto.tituloLivro()));
 
         return new LivroUsuario(
@@ -32,9 +32,8 @@ public class LivroUsuarioMapper {
                 dto.dataFim(),
                 dto.nota(),
                 dto.comentarios(),
-                usuario.getNome(),      // salva no banco
-                livro.getTitulo()       // salva no banco
-
+                usuario.getNome(),
+                livro.getTitulo()
         );
     }
 

@@ -1,9 +1,15 @@
 package com.example.walterbiblioteca.dtos;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public record LivroDto(
+
+        @JsonProperty(access = Access.READ_ONLY) // 👈 não aparece no Swagger POST
         Integer id,
 
         @NotBlank(message = "Título é obrigatório")
@@ -19,5 +25,4 @@ public record LivroDto(
         String genero,
 
         String descricao
-) {
-}
+) {}

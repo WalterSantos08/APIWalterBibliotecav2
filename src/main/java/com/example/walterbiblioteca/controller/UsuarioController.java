@@ -25,11 +25,7 @@ public class UsuarioController {
     // 🔍 GET /api/usuarios/{id}
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioDto> buscarPorId(@PathVariable Integer id) {
-        try {
-            return ResponseEntity.ok(usuarioService.buscarPorId(id));
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(usuarioService.buscarPorId(id));
     }
 
     // ➕ POST /api/usuarios
@@ -41,11 +37,7 @@ public class UsuarioController {
     // ✏️ PUT /api/usuarios/{id}
     @PutMapping("/{id}")
     public ResponseEntity<UsuarioDto> atualizar(@PathVariable Integer id, @Valid @RequestBody UsuarioDto dto) {
-        try {
-            return ResponseEntity.ok(usuarioService.atualizar(id, dto));
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(usuarioService.atualizar(id, dto));
     }
 
     // 🗑️ DELETE /api/usuarios/{id}

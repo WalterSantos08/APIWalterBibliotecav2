@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -28,14 +30,15 @@ public class LivroUsuario {
     @Column(name = "status_leitura", nullable = false)
     private StatusDeLeitura statusLeitura;
 
-    private java.sql.Date dataInicio;
-    private java.sql.Date dataFim;
+    // ✅ Agora com LocalDate (data simples, sem hora/fuso)
+    private LocalDate dataInicio;
+    private LocalDate dataFim;
+
     private int nota;
 
     @Column(columnDefinition = "TEXT")
     private String comentarios;
 
-    // 👇 Campos adicionais para exibir no banco
     @Column(name = "nome_usuario")
     private String nomeUsuario;
 

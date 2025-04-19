@@ -2,16 +2,15 @@ package com.example.walterbiblioteca.dtos;
 
 import com.example.walterbiblioteca.enums.StatusDeLeitura;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public record LivroUsuarioDto(
         Integer id,
         String nomeUsuario,
         String tituloLivro,
         StatusDeLeitura statusLeitura,
-        Date dataInicio,
-        Date dataFim,
+        LocalDate dataInicio,
+        LocalDate dataFim,
         Integer nota,
         String comentarios
 ) {}
-
